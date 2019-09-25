@@ -43,6 +43,11 @@
 #include <OpenMesh/Core/IO/MeshIO.hh>
 #include <OpenMesh/Core/Mesh/PolyMesh_ArrayKernelT.hh>
 #include <opencv2/core.hpp>
+
+#include "triangulation.h"
+#include "utils.h"
+#include "global.h"
+
 // ----------------------------------------------------------------------------
 typedef OpenMesh::PolyMesh_ArrayKernelT<>  MyMesh;
 // ----------------------------------------------------------------------------
@@ -50,6 +55,7 @@ typedef OpenMesh::PolyMesh_ArrayKernelT<>  MyMesh;
 
 int main()
 {
+	/*
 	cv::Mat img;
 	img = cv::Mat::zeros(20, 20, CV_8UC1);
 	std::cout << img.type() << std::endl;
@@ -117,5 +123,17 @@ int main()
 		std::cerr << x.what() << std::endl;
 		return 1;
 	}
+	*/
+
+	Trimpression_Mesh::Point p0 = Trimpression_Mesh::Point(0, 0, 0);
+	Trimpression_Mesh::Point p1 = Trimpression_Mesh::Point(1, 0, 0);
+	Trimpression_Mesh::Point p2 = Trimpression_Mesh::Point(0.5, 1, 0);
+
+	Trimpression_Mesh::Point p = Trimpression_Mesh::Point(0.5, 0.5, 0);
+
+	bool result = point_in_circle(p, p0, p1, p2);
+
+	std::cout << result << std::endl;
+
 	return 0;
 }

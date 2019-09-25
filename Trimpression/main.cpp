@@ -42,6 +42,7 @@
  // -------------------- OpenMesh
 #include <OpenMesh/Core/IO/MeshIO.hh>
 #include <OpenMesh/Core/Mesh/PolyMesh_ArrayKernelT.hh>
+#include <opencv2/core.hpp>
 // ----------------------------------------------------------------------------
 typedef OpenMesh::PolyMesh_ArrayKernelT<>  MyMesh;
 // ----------------------------------------------------------------------------
@@ -49,6 +50,9 @@ typedef OpenMesh::PolyMesh_ArrayKernelT<>  MyMesh;
 
 int main()
 {
+	cv::Mat img;
+	img = cv::Mat::zeros(20, 20, CV_8UC1);
+	std::cout << img.type() << std::endl;
 	MyMesh mesh;
 	// generate vertices
 	MyMesh::VertexHandle vhandle[8];

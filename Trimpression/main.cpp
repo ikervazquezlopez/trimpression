@@ -43,7 +43,9 @@
 #include <OpenMesh/Core/IO/MeshIO.hh>
 #include <OpenMesh/Core/Mesh/PolyMesh_ArrayKernelT.hh>
 #include <opencv2/core.hpp>
+#include <opencv2/imgcodecs.hpp>
 
+#include "Trimpression.h"
 #include "triangulation.h"
 #include "utils.h"
 #include "global.h"
@@ -124,7 +126,7 @@ int main()
 		return 1;
 	}
 	*/
-
+	/*
 	Trimpression_Mesh::Point p0 = Trimpression_Mesh::Point(0, 0, 0);
 	Trimpression_Mesh::Point p1 = Trimpression_Mesh::Point(1, 0, 0);
 	Trimpression_Mesh::Point p2 = Trimpression_Mesh::Point(0.5, 1, 0);
@@ -134,6 +136,11 @@ int main()
 	bool result = point_in_circle(p, p0, p1, p2);
 
 	std::cout << result << std::endl;
+	*/
+
+	cv::String filename = "C:\\Users\\ikervazquezlopez\\Pictures\\Saved Pictures\\Jump.PNG";
+	cv::Mat img = cv::imread(filename, cv::IMREAD_COLOR);
+	Trimpression tp = Trimpression(img);
 
 	return 0;
 }

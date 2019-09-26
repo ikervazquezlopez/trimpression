@@ -1,10 +1,15 @@
 #include "Trimpression.h"
+#include "triangulation.h"
+#include <OpenMesh/Core/IO/MeshIO.hh>
+#include <iostream>
 
 
 
 Trimpression::Trimpression(cv::Mat image)
 {
 	this->src_image = image;
+
+	generate_initial_mesh();
 }
 
 
@@ -25,4 +30,22 @@ void Trimpression::generate_initial_mesh()
 		}
 	}
 	
+	// Create surface using delaunay triangulation
+	this->mesh = Triangulation::triangulate_delaunay_mesh(this->mesh, img_cols, img_rows);
+}
+
+
+void Trimpression::write_mesh() {
+	try
+	{
+		if (!OpenMesh::IO::write_mesh(mesh, "output.off"))
+		{
+			std::cerr << "Cannot write mesh to file 'output.off'" << std::endl;
+		}
+		std::cout << "Mesh written to file." << std::endl;
+	}
+	catch (std::exception & x)
+	{
+		std::cerr << x.what() << std::endl;
+	}
 }

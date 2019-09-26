@@ -11,6 +11,8 @@ public:
 	Trimpression(cv::Mat image);
 	~Trimpression();
 
+	void write_mesh();
+
 private:
 	Trimpression_Mesh mesh;
 	cv::Mat src_image;
